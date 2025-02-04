@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Customer Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #3c3c3c;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00a45f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], textarea {
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: #00a45f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 30px;
+            color: #00a45f;
+        }
+
+        .thank-you-message p {
+            font-size: 16px;
+            color: #3c3c3c;
+        }
+
+        .form-container {
+            display: block;
+        }
+
+        .form-submitted {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">
+        <img src="./nzone.png" height="50px"/>
+    </div>
+    <h1>Log a Case</h1>
+    <p>We're here to assist you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+
+    <!-- Form section -->
+    <div class="form-container">
+        <form id="supportForm" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DdM00000JJoix" method="POST">
+            <input type="hidden" name="orgid" value="00DdM00000JJoix">
+            <input type="hidden" name="retURL" value="http://test.com">
+
+            <label for="name">Contact Name</label>
+            <input id="name" maxlength="80" name="name" size="20" type="text" required>
+
+            <label for="email">Email</label>
+            <input id="email" maxlength="80" name="email" size="20" type="text" required>
+
+            <label for="phone">Phone</label>
+            <input id="phone" maxlength="40" name="phone" size="20" type="text" required>
+
+            <label for="subject">Subject</label>
+            <input id="subject" maxlength="80" name="subject" size="20" type="text" required>
+
+            <label for="description">Description</label>
+            <textarea name="description" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Thank you message section (hidden initially) -->
+    <div class="thank-you-message form-submitted">
+        <h2>Thank you for your submission!</h2>
+        <p>We have received your case. Our support team will get back to you shortly. You will also receive an email with the case details shortly.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Customer Support. All Rights Reserved.</p>
+    </div>
+</div>
+
+<!-- JavaScript to handle form submission and show thank you message -->
+<script>
+    document.getElementById("supportForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from submitting immediately
+        
+        // Simulate form submission with Web-to-Case URL (note: form is still submitted to Salesforce)
+        setTimeout(() => {
+            // Hide form and show thank you message after "submission"
+            document.querySelector('.form-container').classList.add('form-submitted');
+            document.querySelector('.thank-you-message').classList.remove('form-submitted');
+
+            // Now, let the form submit to Salesforce in the background
+            this.submit(); // This sends the data to Salesforce as normal
+        }, 500); // Slight delay to show the message before submission
+    });
+</script>
+
+</body>
+</html>
