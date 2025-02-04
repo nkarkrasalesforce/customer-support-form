@@ -105,6 +105,7 @@
 <body>
 
 <div class="container">
+    <div class="wrapper">
     <div class="logo">
         <img src="./nzone.png" height="50px"/>
     </div>
@@ -115,7 +116,7 @@
     <div class="form-container">
         <form id="supportForm" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DdM00000JJoix" method="POST">
             <input type="hidden" name="orgid" value="00DdM00000JJoix">
-            <input type="hidden" name="retURL" value="http://test.com">
+            <input type="hidden" name="retURL" value="https://nkarkrasalesforce.github.io/customer-support-form/">
 
             <label for="name">Contact Name</label>
             <input id="name" maxlength="80" name="name" size="20" type="text" required>
@@ -135,6 +136,7 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+</div>
 
     <!-- Thank you message section (hidden initially) -->
     <div class="thank-you-message form-submitted">
@@ -155,7 +157,7 @@
         // Simulate form submission with Web-to-Case URL (note: form is still submitted to Salesforce)
         setTimeout(() => {
             // Hide form and show thank you message after "submission"
-            document.querySelector('.form-container').classList.add('form-submitted');
+            document.querySelector('.wrapper').classList.add('form-submitted');
             document.querySelector('.thank-you-message').classList.remove('form-submitted');
 
             // Now, let the form submit to Salesforce in the background
